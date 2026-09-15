@@ -49,4 +49,30 @@ class AlunoTest {
         assertEquals("Assinatura expirada!", luiz.acessarCurso("DevOps e QA"));
     }
 
+    @Test
+    void deveConseguirAcessarSeTiverAssinaturaEmDia() {
+        // Arrange
+        Aluno kleiton = new Aluno("Kleiton");
+        Curso devops = new Curso("DevOps e QA", "RED -> GREEN -> BLUE");
+
+        // Act
+        kleiton.addCurso(devops);
+
+        // Assert
+        assertEquals("RED -> GREEN -> BLUE", kleiton.acessarCurso("DevOps e QA"));
+    }
+
+    @Test
+    void naoDeveConseguirAcessarSeOCursoNaoExistir() {
+        // Arrange
+        Aluno kleiton = new Aluno("Kleiton");
+        Curso devops = new Curso("DevOps e QA", "RED -> GREEN -> BLUE");
+
+        // Act
+        kleiton.addCurso(devops);
+
+        // Assert
+        assertEquals("Curso não encontrado!", kleiton.acessarCurso("Matemática"));
+    }
+
 }
