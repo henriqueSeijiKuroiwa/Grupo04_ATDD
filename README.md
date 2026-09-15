@@ -31,5 +31,20 @@ Uma determinada plataforma vende cursos online e EAD no modelo de assinaturas. O
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|----------------------------------------------------|
 | @Test<br/>public void deveBonificarAlunoComMediaMaiorOuIgualASete() {<br/>var aluno = new Aluno("Giulia", true);<br/>var curso = new Curso("Engenharia de Software");                | curso.finalizar(aluno, 7.0);                                                   | assertEquals(3, aluno.getCursosExtras());<br/>}    |
 | @Test<br/>public void naoDeveBonificarAlunoComMediaMenorQueSete() {<br/>var henrique = new Aluno("Henrique");<br/>var matematica = new Curso("Matematica");                          | henrique.addCurso(matematica);<br/>henrique.finalizarCurso("Matematica", 6.8); | assertEquals(0, henrique.getCursosExtras());<br/>} |
-| @Test<br/>public void deveBloquearAcessoSeSemAssinatura() {<br/>var user = new user("user");<br/>var assinatura = new assinatura("assinatura");<br/>assinatura.status = false;<br/>} | user.possuiCurso();| assertEquals(0, aluno.acessarCurso()){}; |
+| @Test<br/>public void deveBloquearAcessoSeSemAssinatura() {<br/>var user = new user("Luiz");<br/>var assinatura = new assinatura("assinatura");<br/>assinatura.status = false;<br/>} | user.possuiCurso();| assertEquals(0, aluno.acessarCurso()){}; |
 |                                                                                                                                                                                      |                                                                                |                                                    |
+* Esse código precisou ser adaptado ao ser implementado no código.
+
+## RED
+
+### SCENARIO 1
+
+<img src="images/test1RED.png">
+
+### SCENARIO 2
+
+<img src="images/test2RED.png">
+
+### SCENARIO 3
+
+<img src="images/test3RED.png">
