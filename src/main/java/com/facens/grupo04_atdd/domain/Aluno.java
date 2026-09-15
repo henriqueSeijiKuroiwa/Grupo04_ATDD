@@ -47,36 +47,32 @@ public class Aluno {
     }
 
     public String acessarCurso(String nome) {
-        Curso curso = buscarCurso(nome);
-
         if(!assinaturaAtiva) return "Assinatura expirada!";
 
-        if(curso != null) {
-            return curso.getConteudo();
-        }
+        Curso curso = buscarCursoEmAndamento(nome);
 
-        return "Curso não encontrado!";
+        if(curso == null) return "Curso não encontrado!";
+
+        return curso.getConteudo();
     }
 
     public void finalizarCurso(String nome, double media) {
-        Curso curso = buscarCurso(nome);
+        Curso curso = buscarCursoEmAndamento(nome);
 
-        if(curso != null) {
-            curso.setMedia(media);
-            cursosEmAndamento.remove(curso);
-            cursosFinalizados.add(curso);
-        } else {
+        if(curso == null) {
             System.out.println("Curso não encontrado!");
+            return;
         }
+
+        curso.setMedia(media);
+        cursosEmAndamento.remove(curso);
+        cursosFinalizados.add(curso);
     }
 
-    private Curso buscarCurso(String nome) {
-        for(Curso curso : cursosEmAndamento) {
-            if(curso.getNome().equals(nome)) {
-                return curso;
-            }
-        }
-
-        return null;
+    private Curso buscarCursoEmAndamento(String nome) {
+        return cursosEmAndamento.stream()
+                .filter(curso -> curso.getNome().equals(nome))
+                .findFirst()
+                .orElse(null);
     }
 }

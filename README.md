@@ -48,3 +48,23 @@ Uma determinada plataforma vende cursos online e EAD no modelo de assinaturas. O
 ### SCENARIO 3
 
 <img src="images/test3RED.png">
+
+## GREEN
+
+### TESTS JUNIT
+
+<img src="images/testsGREEN.png">
+
+### JACOCO E COBERTURA DE TESTES
+
+<img src="images/jacoco1GREEN.png">
+
+<img src="images/jacoco2GREEN.png">
+
+<img src="images/jacoco3GREEN.png">
+
+<img src="images/jacoco4GREEN.png">
+
+## BLUE
+
+### JACOCO E COBERTURA DE TESTES
