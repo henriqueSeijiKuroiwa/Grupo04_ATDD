@@ -64,3 +64,7 @@ Uma determinada plataforma vende cursos online e EAD no modelo de assinaturas. O
 <img src="images/jacoco3GREEN.png">
 
 <img src="images/jacoco4GREEN.png">
+
+## BLUE
+
+### JACOCO E COBERTURA DE TESTES
