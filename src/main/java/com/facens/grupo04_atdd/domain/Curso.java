@@ -23,7 +23,6 @@ public class Curso {
 
     public void setMedia(double media) {
         this.media = media;
-        if(media >= 7.0) aluno.addCursosExtras(3);
     }
 
     public Aluno getAluno() {

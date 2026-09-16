@@ -67,4 +67,13 @@ Uma determinada plataforma vende cursos online e EAD no modelo de assinaturas. O
 
 ## BLUE
 
+<img src="images/testesBLUE.png">
+
 ### JACOCO E COBERTURA DE TESTES
+
+## 🛠️ Tecnologias Utilizadas
+* **Back-end:** Java 17, Spring Boot (Web, Data JPA)
+* **Front-end:** Vue.js 3, Axios
+* **Banco de Dados:** PostgreSQL (Produção via Docker) e H2 (Testes em Memória)
+* **Qualidade:** JUnit 5, TDD (Red, Green, Blue) com 100% de cobertura.
+* **Infraestrutura:** Docker e Docker Compose
