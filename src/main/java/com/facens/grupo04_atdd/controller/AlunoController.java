@@ -1,8 +1,8 @@
 package com.facens.grupo04_atdd.controller;
 
-import com.facens.grupo04_atdd.dto.AlunoDTO;
-import com.facens.grupo04_atdd.entity.AlunoEntity;
-import com.facens.grupo04_atdd.entity.CursoEntity;
+import com.facens.grupo04_atdd.dto.AlunoRequestDTO;
+import com.facens.grupo04_atdd.domain.AlunoEntity;
+import com.facens.grupo04_atdd.domain.CursoEntity;
 import com.facens.grupo04_atdd.service.AlunoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,7 +23,7 @@ public class AlunoController {
 
     @Operation(summary = "Cadastra um novo aluno")
     @PostMapping
-    public ResponseEntity<AlunoEntity> criar(@RequestBody AlunoDTO dto) {
+    public ResponseEntity<AlunoEntity> criar(@RequestBody AlunoRequestDTO dto) {
         return ResponseEntity.ok(service.cadastrarAluno(dto));
     }
 
