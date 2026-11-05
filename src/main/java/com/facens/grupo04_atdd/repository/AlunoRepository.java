@@ -1,6 +1,6 @@
 package com.facens.grupo04_atdd.repository;
 
-import com.facens.grupo04_atdd.entity.AlunoEntity;
+import com.facens.grupo04_atdd.domain.AlunoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

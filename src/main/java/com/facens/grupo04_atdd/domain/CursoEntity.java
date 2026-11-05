@@ -1,4 +1,4 @@
-package com.facens.grupo04_atdd.entity;
+package com.facens.grupo04_atdd.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

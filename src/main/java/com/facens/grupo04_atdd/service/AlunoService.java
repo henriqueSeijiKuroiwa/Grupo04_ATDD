@@ -2,9 +2,9 @@ package com.facens.grupo04_atdd.service;
 
 import com.facens.grupo04_atdd.domain.Aluno;
 import com.facens.grupo04_atdd.domain.Curso;
-import com.facens.grupo04_atdd.dto.AlunoDTO;
-import com.facens.grupo04_atdd.entity.AlunoEntity;
-import com.facens.grupo04_atdd.entity.CursoEntity;
+import com.facens.grupo04_atdd.dto.AlunoRequestDTO;
+import com.facens.grupo04_atdd.domain.AlunoEntity;
+import com.facens.grupo04_atdd.domain.CursoEntity;
 import com.facens.grupo04_atdd.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class AlunoService {
     @Autowired
     private AlunoRepository repository;
 
-    public AlunoEntity cadastrarAluno(AlunoDTO dto) {
+    public AlunoEntity cadastrarAluno(AlunoRequestDTO dto) {
         // Usa o domínio para validar regras iniciais, se necessário
         Aluno domain = new Aluno(dto.getNome());
 
