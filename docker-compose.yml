@@ -5,15 +5,15 @@ services:
     hostname: postgres
     restart: always
     environment:
-      POSTGRES_DB: usuario_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d usuario_db"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -31,8 +31,8 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
       PGADMIN_CONFIG_SERVER_MODE: "False"
     ports:
       - "5050:80"
@@ -42,7 +42,7 @@ services:
       - app_net
 
   app:
-    build: .
+    build: . # Compila o Spring Boot
     container_name: usuario-api-app
     restart: always
     depends_on:
@@ -50,11 +50,37 @@ services:
         condition: service_healthy
     environment:
       SPRING_PROFILES_ACTIVE: postgres
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/usuario_db
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
     ports:
       - "8080:8080"
+    networks:
+      - app_net
+
+  frontend:
+    build:
+      context: ./frontend # Ajuste para o caminho real da pasta do seu Vue.js
+    container_name: usuario-frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    depends_on:
+      - app
+    networks:
+      - app_net
+
+  cypress:
+    image: cypress/included:13.6.0 # Imagem oficial do Cypress
+    container_name: usuario-cypress
+    profiles: ["e2e"] # Impede que arranque por defeito com os outros serviços
+    depends_on:
+      - frontend
+    environment:
+      - CYPRESS_baseUrl=http://frontend:5173
+    working_dir: /e2e
+    volumes:
+      - ./frontend:/e2e # Mapeia a pasta onde estão os ficheiros cypress/e2e
     networks:
       - app_net
 
